@@ -1,1 +1,9 @@
+1.	/opt/zookeeper-3.4.10/bin/zkServer.sh start
+2.	[root@sdb2 ~]# service mysqld start
+3.	[sdbadmin@sdb1 ~]$ /opt/hadoop-2.7.2/sbin/start-all.sh
+4.	[sdbadmin@sdb1 ~]$ /opt/redis-2.8.17/src/redis-server
+5.	[sdbadmin@sdb1 ~]$hdfs dfs -mkdir -p /sdbadmin/hadoop/input
+
+准备工作完毕
+[sdbadmin@sdb1 share_code]$ /opt/redis-2.8.17/src/redis-cli sadd share:start_urls http://quote.eastmoney.com/stocklist.html#sh
 
