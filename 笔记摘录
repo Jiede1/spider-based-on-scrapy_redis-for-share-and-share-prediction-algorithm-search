@@ -47,3 +47,10 @@ scrapy-redis原理:
 8.下载器完成下载，获得response对象，将该对象交给engine,期间会通过downloadmiddleware的process_response()方法 
 9.engine将获得的response对象交给spider进行解析，期间会经过spidermiddleware的process_spider_input()方法 
 10.从第一步开始循环
+
+
+
+zookeeper 路由和负载均衡的实现。
+在zookeeper中，一但服务器与zookeeper集群断开连接，znode节点已经不存在，此时通过注册相应的watcher机制，服务消费者能够第一时间获取服务提供者信息的变更。利用znode的特点和watcher机制将其作为动态注册和获取服务信息的配置中心，统一管理服务名称和其对应的服务器列表，能够实时的感知到后端服务器的状态，从而保持服务配置信息能够一致以及进行简单的扩容。
+Zookeeper类似于一棵节点树，当服务提供者启动时，将服务器的名称、地址以节点的信息添加到配置中心，而服务消费中通过服务器名称以及配置中心来获得需要调用的服务节点下的服务地址，再利用负载均衡算法选取其中的某一台服务器进行调用。
+
