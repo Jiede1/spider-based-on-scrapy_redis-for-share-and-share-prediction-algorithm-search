@@ -31,3 +31,19 @@ hive -e "select * from /sdbadmin/hadoop/input/900915.csv" >> res1.csv新建csv�
 Service mysqld start
 hive --service metastore
 hive
+
+
+scrapy_redis原理
+
+(https://blog.csdn.net/hjhmpl123/article/details/53292602)
+scrapy-redis原理: 
+1.spider解析下载器下载下来的response,返回item或者是links 
+2.item或者links经过spidermiddleware的process_spider_out()方法，交给engine。 
+3.engine将item交给itempipeline,将links交给调度器 
+4.在调度器中，先将request对象利用scrapy内置的指纹函数，生成一个指纹对象 
+5.如果request对象中的dont_filter参数设置为False,并且该request对象的指纹不在信息指纹的队列中，那么就把该request对象放到优先级的队列中 
+6.从优先级队列中获取request对象，交给engine 
+7.engine将request对象交给下载器下载，期间会通过downloadmiddleware的process_request()方法 
+8.下载器完成下载，获得response对象，将该对象交给engine,期间会通过downloadmiddleware的process_response()方法 
+9.engine将获得的response对象交给spider进行解析，期间会经过spidermiddleware的process_spider_input()方法 
+10.从第一步开始循环
