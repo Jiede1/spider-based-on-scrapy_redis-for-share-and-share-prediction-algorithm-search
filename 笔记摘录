@@ -1,1 +1,33 @@
+在redis的服务器中，会至少存在三个队列： 
+a.用于请求对象去重的集合，队列的名称为spider.name:dupefilter，其中spider.name就是我们自定义的spider的名字，下同。 
+b.待抓取的request对象的有序集合，队列的名称为spider.name:requests 
+c.保存提取到item的列表，队列的名称为spider.name:items 
+d.可能存在存放初始url的集合或者是列表，队列的名称可能是spider.name:start_urls
 
+内存监控：
+MEMUSAGE_NOTIFY_MAIL = ['3081881935@qq.com']
+MEMUSAGE_REPORT = True
+MEMUSAGE_ENABLED = True
+MEMUSAGE_LIMIT_MB = 2048
+MEMDEBUG_ENABLED = True
+MEMDEBUG_NOTIFY = []
+
+EXTENSIONS = {
+    'share_code.extensionsItem.SpiderOpenCloseLogging': 100,
+    'share_code.extensionsTime.Latencies': None,
+    'scrapy.contrib.memusage.MemoryUsage': 50,
+    'scrapy.contrib.memdebug.MemoryDebugger': 60
+}
+
+基于形态相似距离的时间序列相似度计算  李中刘洋洋 
+https://wenku.baidu.com/view/58dfefbc2b160b4e777fcf77.html
+
+
+隐藏层大小：（输入大小+输出大小）*2/3
+
+hive -e "select * from /sdbadmin/hadoop/input/900915.csv" >> res1.csv新建csv文件，在此之前先将hdfs数据导入hive。
+
+启动hive：
+Service mysqld start
+hive --service metastore
+hive
