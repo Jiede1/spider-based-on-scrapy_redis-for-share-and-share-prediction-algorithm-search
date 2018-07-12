@@ -1,0 +1,26 @@
+ 解决 Scrapy-Redis 空跑问题，链接跑完后自动关闭爬虫
+ https://my.oschina.net/2devil/blog/1631116
+ 
+ Scrapy之Extension实例——计算吞吐量及时延
+ https://blog.csdn.net/q_an1314/article/details/51188137
+ 
+ 使用Python进行分布式系统协调 (ZooKeeper/Consul/etcd)
+ https://blog.csdn.net/younger_china/article/details/53063426
+ 
+ 在Scrapy中使用IP池或用户代理（python3）
+ https://www.cnblogs.com/xiaomingzaixian/p/7121280.html
+ 
+ 爬取网易财经中股票的历史交易数据
+ https://blog.csdn.net/pythoncodez/article/details/77623287
+ 
+ 使用scrapy框架爬取股票数据
+ https://blog.csdn.net/u010986776/article/details/79261999
+ 
+ https://blog.csdn.net/u012150179/article/details/38091411
+ scrapy-redis实现爬虫分布式爬取分析与实现
+ 
+ 使用scrapy-redis构建简单的分布式爬虫
+ https://blog.csdn.net/howtogetout/article/details/51633814
+ 
+ scrapy-redis介绍（一）
+ https://blog.csdn.net/hjhmpl123/article/details/53292602

@@ -1,0 +1,86 @@
+#zookeeper 安装
+
+[root@sdb3 opt]# tar -zxf zookeeper-3.4.10.tar.gz 
+[root@sdb3 opt]# chown -R sdbadmin:sdbadmin_group zookeeper-3.4.10
+[root@sdb3 opt]# su – sdbadmin
+[sdbadmin@sdb3 src]$ cd ../conf/
+[sdbadmin@sdb3 conf]$ vim zoo.cfg
+tickTime = 2000
+dataDir = /opt/zookeeper-3.4.10/data
+clientPort = 2181
+initLimit = 5
+syncLimit = 2
+server.0=192.168.111.130:2888:3888
+server.1=192.168.111.129:2888:3888
+server.2=192.168.111.128:2888:3888
+[sdbadmin@sdb3 conf]$ cd ../
+[sdbadmin@sdb3 zookeeper-3.4.10]$ mkdir data
+[sdbadmin@sdb3 zookeeper-3.4.10]$ cd data
+[sdbadmin@sdb3 data]$ echo '2' > myid
+---------------------------------------------------
+#hive安装
+
+利用MySQL储存hive的元数据信息，因此先安装MySQL
+
+yum install mysql
+yum install mysql-server
+yum install mysql-devel
+
+下载hive安装包
+tar -zxcf /opt/apache-hive-1.2.2-bin.tar.gz
+配置hive与MySQL的集成，储存元信息
+
+CREATE USER 'sdbadmin'@'%' IDENTIFIED BY '';
+GRANT ALL ON *.* TO 'sdbadmin'@'%';
+flush privileges;
+create databases hive;
+
+#配置hive
+具体参考https://www.cnblogs.com/kinginme/p/7233315.html
+https://blog.csdn.net/jssg_tzw/article/details/72354470
+https://blog.csdn.net/jssg_tzw/article/detahttps://mp.weixin.qq.com/s?__biz=MzIzODExMDE5MA==&mid=2694182433&idx=1&sn=687b754cddc7255026434c683f487ac0#rdils/72354470
+
+
+#hive学习
+https://mp.weixin.qq.com/s?__biz=MzIzODExMDE5MA==&mid=2694182433&idx=1&sn=687b754cddc7255026434c683f487ac0#rd
+https://blog.csdn.net/jssg_tzw/article/details/72354470
+https://www.cnblogs.com/kinginme/p/7233315.html
+
+#利用hive读取hdfs数据到外部表
+ hive> create external table os
+    > (dt string, StockCode string, Name string, ClosingPrice float, HighestPrice float, LowestPrice float, OpeningPrice float, LastClose float, Change float, QuoteChange float, Turnover float, DealAmount float, DealValue float, TotalMarketValue float, CirculationMarketValue float)
+    > row format delimited fields terminated by ',' lines terminated by '\n'
+    > stored as textfile
+> tblproperties ("skip.header.line.count"="1");
+
+>load data inpath '/sdbadmin/hadoop/input/601799.csv' into table os;
+	>select * from os;
+  ---------------------------------------------------------
+#安装redis
+
+$ wget http://download.redis.io/releases/redis-2.8.17.tar.gz
+$ tar xzf redis-2.8.17.tar.gz
+$ cd redis-2.8.17
+$ make
+$ cd src
+$ ./redis-server
+---------------------------------------
+#安装scrapy
+
+wget https://twistedmatrix.com/Releases/Twisted/13.1/Twisted-13.1.0.tar.bz2
+1.	wget https://twistedmatrix.com/Releases/Twisted/17.1/Twisted-17.1.0.tar.bz2  
+2.	tar -jxvf Twisted-17.1.0.tar.bz2  
+3.	cd Twisted-17.1.0  
+4.	python setup.py install  
+5.	cd ..  
+6.	pip install scrapy  
+7.  pip install scrapy-redis
+
+解决scrapy任何地方启动：
+进入 Python 的主目录，如cd /usr/local/python3.6/bin，查找 scrapy 项 
+（2）检查 cd /usr/bin/ | ll | grep scrapy，查看是否存在 
+（3）不存在则执行
+ ln -s /usr/local/python-2.7/bin/scrapy /usr/bin/scrapy 
+（4）回到shell，执行 scrapy version，成功
+
+
