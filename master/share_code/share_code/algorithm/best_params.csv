@@ -1,0 +1,1 @@
+{'shuffle': False, 'hidden_layer_sizes': (7,), 'activation': 'relu', 'max_iter': 20000, 'solver': 'adam', 'learning_rate': 'adaptive', 'momentum': 0}
