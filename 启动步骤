@@ -1,9 +1,19 @@
-1.	/opt/zookeeper-3.4.10/bin/zkServer.sh start   #启动zookeeper
-2.	[root@sdb2 ~]# service mysqld start   #启动MySQL 为hive做准备
-3.	[sdbadmin@sdb1 ~]$ /opt/hadoop-2.7.2/sbin/start-all.sh   #启动Hadoop
-4.	[sdbadmin@sdb1 ~]$ /opt/redis-2.8.17/src/redis-server   #启动redis
-5.	[sdbadmin@sdb1 ~]$hdfs dfs -mkdir -p /sdbadmin/hadoop/input
+#项目的框架有点大，所以启动步骤有点麻烦，下面贴出了master/slave主机的启动步骤。
 
-准备工作完毕
-[sdbadmin@sdb1 share_code]$ /opt/redis-2.8.17/src/redis-cli sadd share:start_urls http://quote.eastmoney.com/stocklist.html#sh
+#Master主机（Master端的程序负责给定初始url，程序基于此下载好目标url，储存进redis，供slave端程序调用）
+1.	[sdbadmin@sdb1 ~]$ /opt/zookeeper-3.4.10/bin/zkServer.sh start   #启动zookeeper
+2.	[sdbadmin@sdb1 ~]$ /opt/hadoop-2.7.2/sbin/start-all.sh   #启动Hadoop
+3.	[sdbadmin@sdb1 ~]$ /opt/redis-2.8.17/src/redis-server   #启动redis
+4.	[sdbadmin@sdb1 ~]$hdfs dfs -mkdir -p /sdbadmin/hadoop/input
+
+给定初始url，准备工作完毕
+5.  [sdbadmin@sdb1 share_code]$ /opt/redis-2.8.17/src/redis-cli sadd share:start_urls http://quote.eastmoney.com/stocklist.html#sh
+
+进入爬虫所在目录，开始跑爬虫程序
+6.  [sdbadmin@sdb1 share_code]$ scrapy crawl share
+
+#Slave端主机（Slave端程序负责从redis中读取目标url，下载好股票数据，并存进hdfs）
+1.  [root@sdb2 ~]# service mysqld start   #启动MySQL 为hive做准备
+2.  [sdbadmin@sdb2 ~]# hive --service metastore #启动hive
+3.  [sdbadmin@sdb2 share_code]# scrapy crawl spider  #进入爬虫所在目录，运行爬虫
 

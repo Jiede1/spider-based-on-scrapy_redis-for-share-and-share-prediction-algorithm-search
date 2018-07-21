@@ -1,4 +1,4 @@
-#zookeeper 安装
+#1.zookeeper 安装
 
 [root@sdb3 opt]# tar -zxf zookeeper-3.4.10.tar.gz 
 [root@sdb3 opt]# chown -R sdbadmin:sdbadmin_group zookeeper-3.4.10
@@ -18,7 +18,8 @@ server.2=192.168.111.128:2888:3888
 [sdbadmin@sdb3 zookeeper-3.4.10]$ cd data
 [sdbadmin@sdb3 data]$ echo '2' > myid
 ---------------------------------------------------
-#hive安装
+
+#2.hive安装
 
 利用MySQL储存hive的元数据信息，因此先安装MySQL
 
@@ -56,7 +57,8 @@ https://www.cnblogs.com/kinginme/p/7233315.html
 >load data inpath '/sdbadmin/hadoop/input/601799.csv' into table os;
 	>select * from os;
   ---------------------------------------------------------
-#安装redis
+  
+#3.安装redis
 
 $ wget http://download.redis.io/releases/redis-2.8.17.tar.gz
 $ tar xzf redis-2.8.17.tar.gz
@@ -65,7 +67,8 @@ $ make
 $ cd src
 $ ./redis-server
 ---------------------------------------
-#安装scrapy
+
+#4.安装scrapy
 
 wget https://twistedmatrix.com/Releases/Twisted/13.1/Twisted-13.1.0.tar.bz2
 1.	wget https://twistedmatrix.com/Releases/Twisted/17.1/Twisted-17.1.0.tar.bz2  
