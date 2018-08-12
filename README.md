@@ -7,33 +7,33 @@
 质的变化----这个项目所包含的组件和技术，还有这个项目的各个模块，是很接近企业的实际情况，只不过企业的更大更完善。有兴趣
 的学生可以玩玩，也可以联系我。我的博客：https://blog.csdn.net/jiede1/  我的微信：jiedemaikena
 
-项目意义：
-大数据方面： 利用scrapy-redis插件实现爬虫数据的分布式爬取，加快爬取速度。我选择了东方财富网的股票数据。
+项目意义：  
+大数据方面： 利用scrapy-redis插件实现爬虫数据的分布式爬取，加快爬取速度。我选择了东方财富网的股票数据。  
 AI方面： 鉴于项目选择了股票数据的爬取，因此使用神经网络以及HTM算法分别二次实现预测算法，对股票的“每日的开盘价”进行预测。
 
 环境： 四台服务器，Centos6系统。（实际上由于是分布式的，可以部署任意多台服务器，笔者四台）
 
-技术点：
-scrapy  单机爬虫框架
-redis   高速的key-value数据库
-zookeeper  分布式监控框架
-hadoop    分布式存储系统
-BP neural network 反向传播神经网络 
+技术点：  
+scrapy  单机爬虫框架  
+redis   高速的key-value数据库  
+zookeeper  分布式监控框架  
+hadoop    分布式存储系统  
+BP neural network 反向传播神经网络   
 HTM algotithm  类脑AI算法，可用于对时间序列的预测和异常检测
 
 项目效果：该项目完善的实现了数据的分布式爬取和存储功能，也实现了两个预测算法进行预测，其中神经网络预测效果并不良好，
 但HTM算法效果突出。对股票预测有兴趣的人，可以进一步研究此算法。
 
 
-各目录意义：
- master spider的master端的源码
- slave spider的slave端的源码
- KSMD.py 基于MSD相似度的kmeans算法实现
- nupic_output.py nupic算法的output
- share_experiment.py Nupic算法的swarm自动寻最优参数
- similarity.py MSD相似度
- test_nupic.py Nupic算法预测股票
- testbp.py BP神经网络预测股票
+各目录意义：   
+master  spider的master端的源码  
+slave spider的slave端的源码  
+KSMD.py 基于MSD相似度的kmeans算法实现
+nupic_output.py nupic算法的output  
+share_experiment.py Nupic算法的swarm自动寻最优参数  
+similarity.py MSD相似度
+test_nupic.py Nupic算法预测股票
+testbp.py BP神经网络预测股票
  
  
  
