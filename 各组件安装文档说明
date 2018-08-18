@@ -77,6 +77,8 @@ wget https://twistedmatrix.com/Releases/Twisted/13.1/Twisted-13.1.0.tar.bz2
 4.	python setup.py install  
 5.	cd ..  
 6.	pip install scrapy  
+
+# 安装scrapy-redis
 7.  pip install scrapy-redis
 
 解决scrapy任何地方启动：
