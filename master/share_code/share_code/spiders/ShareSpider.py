@@ -18,7 +18,7 @@ from kazoo.client import KazooClient
 class ShareSpider(RedisSpider):
     name = "share"
     #allowed_domains = ["share.org"]redis_key = 'share:start_urls'
-    start_urls = 'http://quote.eastmoney.com/stocklist.html#sh'
+    #start_urls = 'http://quote.eastmoney.com/stocklist.html#sh'
     redis_key = 'share:start_urls'
     
     temp_url_piece = 'http://quotes.money.163.com/trade/lsjysj_'  #中间url的片段
